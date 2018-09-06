@@ -2,6 +2,7 @@
 cd `dirname $0`
 
 img_output="deep/edas-config-center" 
+SERVER_IP=192.168.31.100
 
 docker build -t $img_output .
 
@@ -14,4 +15,5 @@ docker run -d \
     $img_output \
     java \
         -Djava.security.egd=file:/dev/./urandom \
+        -Daddress.server.ip=$SERVER_IP  \
         -jar /home/edas-config-center.jar
